@@ -19,11 +19,9 @@ print('Transcribing uploaded file')
 transcriptionID=response1.json()["id"]
 print('Extract transcript ID')
 
-import requests
 endpoint = f"https://api.assemblyai.com/v2/transcript/{transcriptionID}"
 headers = {
     "authorization": api_key,
-
 }
 transcriptionResults = requests.get(endpoint, headers=headers)
 

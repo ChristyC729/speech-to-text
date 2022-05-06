@@ -3,14 +3,22 @@ import requests
 f = open("api.txt", "r")
 api_key = f.read()
 
-filename = "./media/youtube.mp4"
-def read_file(filename, chunk_size=5242880):
+filename = "./media/Reasearch.mp3"
+""" def read_file(filename, chunk_size=5242880):
     with open(filename, 'rb') as _file:
         while True:
             data = _file.read(chunk_size)
             if not data:
                 break
             yield data
+ """
+def read_file(filename):
+    with open(filename, 'rb') as _file:
+        while True:
+            data=_file.read()
+            if not data:
+                break
+            yield data 
 
 headers = {'authorization': api_key}
 response = requests.post('https://api.assemblyai.com/v2/upload',
