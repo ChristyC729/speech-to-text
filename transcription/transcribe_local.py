@@ -1,9 +1,10 @@
 import requests
+import config
+import time
 
-f = open("api.txt", "r")
-api_key = f.read()
+api_key = config.api_key
 
-filename = "./media/Reasearch.mp3"
+filename = "./media/Research.mp3"
 """ def read_file(filename, chunk_size=5242880):
     with open(filename, 'rb') as _file:
         while True:
@@ -43,7 +44,6 @@ print('Transcribing uploaded file')
 transcriptionID=response1.json()["id"]
 print('Extract transcript ID')
 
-import requests
 endpoint = f"https://api.assemblyai.com/v2/transcript/{transcriptionID}"
 headers = {
     "authorization": api_key,
@@ -54,6 +54,7 @@ transcriptionResults = requests.get(endpoint, headers=headers)
 while transcriptionResults.json()['status'] != 'completed':
   print('Transcription is processing ...')
   transcriptionResults = requests.get(endpoint, headers=headers)
+  time.sleep(5)
 
 print('Retrieve transcription results')
 
