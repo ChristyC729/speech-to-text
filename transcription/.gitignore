@@ -1,3 +1,5 @@
 config.py
 __pycache__
 .ipynb_checkpoints
+media/
+transcribe_youtube.py

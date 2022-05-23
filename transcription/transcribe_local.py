@@ -1,18 +1,12 @@
 import requests
 import config
 import time
+import sys
 
 api_key = config.api_key
 
-filename = "./media/Research.mp3"
-""" def read_file(filename, chunk_size=5242880):
-    with open(filename, 'rb') as _file:
-        while True:
-            data = _file.read(chunk_size)
-            if not data:
-                break
-            yield data
- """
+filename = input("Enter local file path: ")
+
 def read_file(filename):
     with open(filename, 'rb') as _file:
         while True:
@@ -21,12 +15,15 @@ def read_file(filename):
                 break
             yield data 
 
+
 headers = {'authorization': api_key}
-response = requests.post('https://api.assemblyai.com/v2/upload',
+try: 
+    response = requests.post('https://api.assemblyai.com/v2/upload',
                         headers=headers,
                         data=read_file(filename))
+except:
+    sys.exit("Could not find file path")
 
-#print(response.json())
 uploaded_url = response.json()['upload_url']
 print('Audio file has been uploaded to AssemblyAI')
 
@@ -56,6 +53,7 @@ while transcriptionResults.json()['status'] != 'completed':
   transcriptionResults = requests.get(endpoint, headers=headers)
   time.sleep(5)
 
-print('Retrieve transcription results')
-
+print('Retrieve transcription results\n')
+print('================================\n')
 print(transcriptionResults.json()["text"])
+print('\n================================\n')
