@@ -36,7 +36,7 @@ Two different implementations of speech-to-text transcriptions are displayed in 
 * .mp4, .m4p (with DRM), .m4v
 * .mxf
 
-## 1. Transcription Local Files:
+## 1. Transcribing Local Files:
 
 In the folder directory, you can run:
 ```
@@ -48,7 +48,7 @@ Enter local file path:
 ```
 If the file path is located, it will return the transcription directly in the terminal.
 
-## 2. Transcription URL Files:
+## 2. Transcribing URL Files:
 
 In the folder directory, you can run:
 ```
